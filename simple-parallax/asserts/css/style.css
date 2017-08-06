@@ -1,0 +1,81 @@
+body, html{
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8em;
+    color: #666;
+}
+
+.pimg1 {
+    background-image: url("../img/pexels-1.jpeg");
+    min-height: 100%;
+}
+
+.pimg2 {
+    background-image: url("../img/pexels-2.jpeg");
+    min-height: 400px;
+}
+.pimg3 {
+    background-image: url("../img/pexels-3.jpeg");
+    min-height: 350px;
+}
+
+.pimg1, .pimg2, .pimg3 {
+    position: relative;
+    opacity: 0.70;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
+
+.section{
+    text-align: center;
+    padding: 50px;
+}
+
+.section-light{
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+
+.section-dark{
+    background-color: #282e34;
+    color: #ddd;
+}
+
+
+.ptext{ 
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.ptext .border{
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+}
+
+.ptext .border.trans{
+    background-color: transparent;
+    border: #111 solid 4px;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;    
+}
+
+/* Disable Effect for mobile versioin */
+
+@media(max-width: 568px){
+    .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;
+    }
+}
