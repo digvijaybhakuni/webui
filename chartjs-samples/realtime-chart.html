@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ChartJS || Sample</title>
+</head>
+<body>
+
+	<div>
+  <canvas id="chart-real-time"></canvas>
+	</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.4.3/Rx.min.js" integrity="sha256-hRKdKxNWF3kA5HoYA7GoSRILnmbQS4cwv23bJwqJlns=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+    const chartCtx = document.getElementById('chart-real-time');
+
+
+    const linechart = new Chart(chartCtx, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4'],
+        datasets: [
+          {
+            label: 'Happy',
+            data: [12, 34, 45, 0],
+            borderColor: "rgb(68,146,159)",
+            backgroundColor: "rgba(68,146,159, .7)",
+            borderWidth: 2,
+            fill: false
+          },
+          {
+            label: 'Sad',
+            data: [7, 23, 34, 0],
+            borderColor: "rgb(205,167,19)",
+            backgroundColor: "rgba(205,167,19, .7)",
+            borderWidth: 2,
+            fill: false
+          },
+          {
+            label: 'Angry',
+            data: [7, 6, 23, 0],
+            borderColor: "rgb(226,67,1)",
+            backgroundColor: "rgba(226,67,1, .7)",
+            borderWidth: 2,
+            fill: false
+          },
+          {
+            label: 'No Emotion',
+            data: [7, 6, 23, 0],
+            borderColor: "rgb(0,0, 0)",
+            backgroundColor: "rgba(0,0, 0, .7)",
+            borderWidth: 2,
+            fill: false
+          }
+        ],
+        options: {
+          fill: false
+        }
+      }
+    });
+
+    const randGen = () => Math.floor(Math.random() * (100 - 10)) + 1;
+
+    Rx.Observable.interval(1000).map(res => {
+      return [randGen(), randGen(), randGen(), randGen()];
+    }).subscribe(res => {
+      const one = randGen();
+      const two = randGen();
+      const three = randGen();
+      const four = randGen();
+      linechart.data.datasets[0].data = res.map( e => e + one);
+      linechart.data.datasets[1].data = res.map( e => e + two);
+      linechart.data.datasets[2].data = res.map( e => e + three);
+      linechart.data.datasets[3].data = res.map( e => e + four);
+      linechart.update();
+      // console.log(barChart.data.datasets[0].data);
+    });
+  </script>
+</body>
+</html>
